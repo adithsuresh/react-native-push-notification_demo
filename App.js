@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Text, View, Button, StyleSheet} from 'react-native';
-import {getFCMToken} from './components/services/FirebaseController';
+import FirebaseController, {getFCMToken} from './components/services/FirebaseController';
 import PNController, {showNotification} from './components/services/PNController';
 
 const App = () => {
+  useEffect(() => {
+    console.log(`Running on ${__DEV__ ? 'DEVELOPMENT' : 'PRODUCTION'} mode`);
+  }, []);
+
   const handleButtonPress = async () => {
     showNotification(
       'Local Notification',
@@ -14,13 +18,16 @@ const App = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text>Press a button to trigger the notification</Text>
-      <View style={{marginTop: 20}}>
-        <Button title={'Local Push Notification'} onPress={handleButtonPress} />
-      </View>
+    <>
       <PNController />
-    </View>
+      <FirebaseController />
+      <View style={styles.container}>
+        <Text>Press the button below to trigger the notification</Text>
+        <View style={{marginTop: 20}}>
+          <Button title="Local Push Notification" onPress={handleButtonPress} />
+        </View>
+      </View>
+    </>
   );
 };
 
@@ -31,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonContainer: {
-    marginTop: 20,
+    margin: 20,
   },
 });
 

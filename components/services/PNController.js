@@ -5,11 +5,11 @@ import {View} from 'react-native';
 
 const PNController = (props) => {
   useEffect(() => {
-    console.log('PushController props:', props);
+    console.log('PNController props:', props);
   }, [props]);
 
   useEffect(() => {
-    console.log('PushController mount');
+    console.log('PNController mount');
     PushNotification.configure({
       onRegister: (token) => {
         console.log('TOKEN:', token);

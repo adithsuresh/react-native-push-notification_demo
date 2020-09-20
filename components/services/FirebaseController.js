@@ -1,6 +1,7 @@
 import firebase from '@react-native-firebase/app';
 import '@react-native-firebase/messaging';
 import React, {useEffect} from 'react';
+import {View} from 'react-native';
 
 const FirebaseController = (props) => {
   useEffect(() => {
@@ -11,7 +12,7 @@ const FirebaseController = (props) => {
     console.log('FirebaseController props:', props);
   }, [props]);
 
-  return null;
+  return <View />;
 };
 
 const getToken = async () => {
